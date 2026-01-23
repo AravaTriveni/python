@@ -1,0 +1,14 @@
+def generate(arr):
+    n=len(arr)
+    totalsubsets=(1<<n)
+    ans=[]
+    for val in range(totalsubsets):
+        temp=[]
+        for i in range(n):
+            if(val&(1<<i)):
+                temp.append(arr)
+                ans.append(temp)
+            return ans
+arr=[1,2,3]
+arr=generate(arr)
+print(ans)
