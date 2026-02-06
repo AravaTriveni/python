@@ -1,0 +1,15 @@
+#climbing stairs
+def climbStairs(n):
+    def countWays(ind,dp):
+        if(ind==0):
+            return 1
+        if(ind<0):
+            return 0
+        if(dp[ind]!=-1):
+            return dp[ind]
+        oneStep=countWays(ind-1,dp)
+        twoStep=countWays(ind-2,dp)
+        dp[ind]=oneStep+twoStep
+        return dp[ind]
+    dp=[-1]*(n+1)
+    return countWays(ind,dp)
