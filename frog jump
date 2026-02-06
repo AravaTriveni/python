@@ -1,0 +1,18 @@
+def frogJump(heights):
+    def minEnergy(ind,heights,dp):
+        if(ind==0):
+            return 0
+        if(dp[ind]!=-1):
+            return dp[ind]
+        oneJump=abs(heights[ind]-heights[ind-1])+minEnergy(ind-1,heights)
+        twoJump=float("inf")
+        if(ind>1):
+            twoJump=abs(heights[ind]-heights[ind-2])+minEnergy(ind-2,heights)
+        dp[ind]= min(oneJump,twoJump)
+        return dp[ind]
+    n=len(heights)
+    ind=n-1
+    return minEnergy(ind,heights)
+n=int(input())
+heights=list(map(int,input().split()))
+print(frogJump(heights))
