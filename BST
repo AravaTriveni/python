@@ -1,0 +1,28 @@
+class Node:
+    def __init__(self,data):
+        self.left=None
+        self.val=data
+        self.right=None
+def createBST(arr):     # 6 4 3 5 7 8
+    root=None
+    for data in arr:    #data=4
+        if(root==None):
+            root=Node(data)  #1000
+        else:
+            temp=root    #1000
+            while(True):
+                if(data<temp.val):    #4<6
+                    if(temp.left):   # to check left subtree is empty or not
+                        temp=temp.left
+                    else:
+                        temp.left=Node(data)
+                        break
+                elif(data>temp.val):
+                    if(temp.right):
+                        temp=temp.right
+                    else:
+                        temp.right=Node(data)
+                        break
+    print(root.left.right.val)  # we can change the print statement
+arr=list(map(int,input().split()))
+createBST(arr)
