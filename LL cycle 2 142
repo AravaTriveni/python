@@ -1,0 +1,33 @@
+class Node:
+    def __init__(self,data): #1
+        self.val=data
+        self.next=None
+def createLinkedList(arr):#1 2 3
+    head=None
+    for data in arr: #data=1
+        if(head==None):
+            head=Node(data)#1001
+            temp=head #1001
+        else:
+            temp.next=Node(data)
+            temp=temp.next
+    temp.next=head.next
+    x=cycleStartingNode(head)
+    print(x.val)
+def cycleStartingNode(head):
+    slow=head
+    fast=head
+    while(fast and fast.next):
+        slow=slow.next
+        fast=fast.next.next
+        if(slow==fast):
+            fast=head
+            while(True):
+                if(slow==fast):
+                    return slow
+                slow=slow.next
+                fast=fast.next
+            return -1 
+arr=list(map(int,input().split()))
+createLinkedList(arr)
+            
