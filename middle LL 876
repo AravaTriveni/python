@@ -1,0 +1,24 @@
+class Node:
+    def __init__(self,data): #1
+        self.val=data
+        self.next=None
+def createLinkedList(arr):#1 2 3
+    head=None
+    for data in arr: #data=1
+        if(head==None):
+            head=Node(data)#1001
+            temp=head #1001
+        else:
+            temp.next=Node(data)
+            temp=temp.next
+    x=middle(head)
+    print(x.val)
+def middle(head):
+        slow=head
+        fast=head
+        while(fast and fast.next):
+            slow=slow.next
+            fast=fast.next.next                        #hare and tortoise algorithm
+        return slow
+arr=list(map(int,input().split()))                             
+createLinkedList(arr)            
